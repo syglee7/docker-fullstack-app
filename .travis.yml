@@ -21,3 +21,13 @@ after_success:
   - docker push syglee7/docker-frontend
   - docker push syglee7/docker-backend
   - docker push syglee7/docker-nginx
+
+  deploy:
+    provider: elasticbeanstack
+    region: "ap-northeast-2"
+    app: "docker-fullstack-app"
+    env: "DockerFullstackApp-env"
+    bucket_name: elasticbeanstalk-ap-northeast-2-377852293320
+    bucket_path: "docker-fullstack-app"
+    on:
+      branch: main
